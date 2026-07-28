@@ -1,4 +1,4 @@
-import { List } from '@phosphor-icons/react';
+import { List, SignOut } from '@phosphor-icons/react';
 
 interface HeaderProps {
   drawerId: string;
@@ -6,7 +6,15 @@ interface HeaderProps {
   avatarUrl: string;
 }
 
+
+
 export function Header({ drawerId, userName, avatarUrl }: HeaderProps) {
+
+  function handleLogout() {
+    localStorage.clear();
+    window.location.href = '/';
+  }
+  
   return (
     <header className="flex items-center gap-3">
       <div className="flex-none lg:hidden">
@@ -28,6 +36,14 @@ export function Header({ drawerId, userName, avatarUrl }: HeaderProps) {
       <h1 className="text-base lg:text-4xl font-bold tracking-tight">
         Bem vindo, {userName}!
       </h1>
+      <button
+        onClick={handleLogout}
+        className="flex items-center gap-2 px-3 py-2 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 rounded-lg font-semibold transition-colors shadow-sm cursor-pointer text-sm"
+        title="Sair"
+      >
+        <SignOut size={20} weight="bold" />
+        <span className="hidden sm:inline">Sair</span>
+      </button>
     </header>
   );
 }

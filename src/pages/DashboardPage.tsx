@@ -1,5 +1,4 @@
 import { useState, useEffect, useMemo } from 'react';
-import { SignOut } from '@phosphor-icons/react';
 import { AddMealCard } from '@/components/cards/AddMealCard';
 import { TotalMealsCard } from '@/components/cards/TotalMealsCard';
 import { Header } from '@/components/layout/Header';
@@ -35,14 +34,6 @@ export function DashboardPage({ drawerId }: DashboardPageProps) {
   const { user } = useAuth();
   if (!user){
     return <></>
-  }
-
-  function handleLogout () {
-    localStorage.clear();
-    window.location.href = '/';
-  }
-  if (!user){
-    return <> </>
   }
 
   const modal = useMealModal();
@@ -134,13 +125,6 @@ export function DashboardPage({ drawerId }: DashboardPageProps) {
 
   return (
     <>
-      <button
-        onClick={handleLogout}
-        className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[9999] flex items-center gap-2 px-4 py-2 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 rounded-lg font-semibold transition-colors shadow-sm cursor-pointer"
-      >
-        <SignOut size={20} weight="bold" />
-        Sair
-      </button>
 
       <div className="flex flex-col gap-6 w-full max-w-[1200px] mx-auto mb-8">
         <Header
