@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { useAuth } from "@/contexts/AuthContext";
-import { api } from "@/lib/axios";
+import { api } from "@/lib/api";
 import { Meal } from "@/types/meal";
 import { Header } from "@/components/layout/Header";
 
@@ -27,7 +27,7 @@ export function MetricsPage({ drawerId }: MetricsPageProps) {
     loadMeals();
   }, []);
 
-  // Cálculo IMC com type casting seguro para evitar erros de tipagem no build
+  // Cálculo IMC
   const weight = (user as any)?.weight || 70;
   const height = (user as any)?.height || 1.75;
 
@@ -43,18 +43,21 @@ export function MetricsPage({ drawerId }: MetricsPageProps) {
     return { text: 'Obesidade', color: 'text-red-600' };
   }, [imc]);
 
-  // Média Calórica dos últimos 7 dias
+  // Média Calórica dos últimos 7 dias 
   const calorieMetrics = useMemo(() => {
     const today = new Date();
     const sevenDaysAgo = new Date();
     sevenDaysAgo.setDate(today.getDate() - 7);
 
-    const recentMeals = meals.filter((meal) => {
-      const mealDate = new Date(meal.eatTime);
+    const recentMeals = meals.filter((meal: any) => {
+      const mealDate = new Date(meal.eatTime || meal.date || Date.now());
       return mealDate >= sevenDaysAgo && mealDate <= today;
     });
 
-    const totalCalories = recentMeals.reduce((acc, meal) => acc + meal.totals.calories, 0);
+    const totalCalories = recentMeals.reduce((acc, meal: any) => {
+      const calories = meal.totals?.calories || meal.calories || 0;
+      return acc + calories;
+    }, 0);
     
     const average = Math.round(totalCalories / 7);
     const goal = (user as any)?.caloriesGoal || 2000;
@@ -84,7 +87,7 @@ export function MetricsPage({ drawerId }: MetricsPageProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         
-        {/* Card de IMC (Req 09) */}
+
         <div className="card bg-base-100 shadow-sm border border-base-200 p-6 flex flex-col justify-between">
           <div>
             <h3 className="text-lg font-semibold text-gray-700">Índice de Massa Corporal (IMC)</h3>
@@ -103,7 +106,7 @@ export function MetricsPage({ drawerId }: MetricsPageProps) {
           </div>
         </div>
 
-        {/* Card de Média Calórica dos Últimos 7 Dias (Req 10) */}
+
         <div className="card bg-base-100 shadow-sm border border-base-200 p-6 flex flex-col justify-between">
           <div>
             <h3 className="text-lg font-semibold text-gray-700">Média Calórica (Últimos 7 Dias)</h3>
@@ -131,3 +134,6 @@ export function MetricsPage({ drawerId }: MetricsPageProps) {
     </div>
   );
 }
+
+
+
