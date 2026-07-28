@@ -7,8 +7,9 @@ import {
 import { AppLayout } from '@/layouts/AppLayout';
 import { LoginPage } from '@/pages/LoginPage';
 import { DashboardPage } from '@/pages/DashboardPage';
-import { ProtectedRoute } from './ProtectRoute';
 import { DietFoodPage } from '@/pages/DietFood';
+import { MetricsPage } from '@/pages/MetricasPage'; 
+import { ProtectedRoute } from './ProtectRoute';
 
 export function Router() {
   return (
@@ -28,27 +29,18 @@ export function Router() {
           }
         >
           <Route
-            path="/foods"
-            element={<DietFoodPage />}
-        
+            path="/"
+            element={<DashboardPage drawerId="main-drawer" />}
           />
 
-        </Route>
-
-       
-
-        <Route
-          element={
-            <ProtectedRoute>
-              <AppLayout />
-            </ProtectedRoute>
-          }
-        >
           <Route
-            path="/"
-            element={
-              <DashboardPage drawerId="main-drawer" />
-            }
+            path="/foods"
+            element={<DietFoodPage />}
+          />
+
+          <Route
+            path="/progress"
+            element={<MetricsPage drawerId="main-drawer" />}
           />
 
         </Route>
