@@ -7,7 +7,7 @@
 - Adicionei a funcionalidade de logout junto com um botão na pagina de iniicio.
 - O card de metas diárias de calorias fica vermelha ao ultrapassar as calorias diárias. 
 - Calculo do IMC.
-- 
+- Media calorica nos últimmos 7 dias.
 -
 -
 -
