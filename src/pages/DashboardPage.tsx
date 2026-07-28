@@ -42,13 +42,23 @@ export function DashboardPage({ drawerId }: DashboardPageProps) {
   const [loading, setLoading] = useState(true);
 
   async function loadMeals() {
-    try {
-      const response = await api.get('/meals');
-      setMeals(response.data);
-    } finally {
-      setLoading(false);
+  setLoading(true);
+
+  try {
+    const response = await api.get("/meals");
+
+    if (!Array.isArray(response.data)) {
+      throw new Error("A API não retornou uma lista de refeições.");
     }
+
+    setMeals(response.data);
+  } catch (error) {
+    console.error("Erro ao carregar refeições:", error);
+    setMeals([]);
+  } finally {
+    setLoading(false);
   }
+}
 
   useEffect(() => {
     loadMeals();
@@ -90,7 +100,7 @@ export function DashboardPage({ drawerId }: DashboardPageProps) {
     return meals.filter((meal) => {
       const date = new Date(meal.eatTime);
       return (
-        date.getDay() === today.getDay() &&
+        date.getDate() === today.getDate() &&
         date.getMonth() === today.getMonth() &&
         date.getFullYear() === today.getFullYear()
       );
