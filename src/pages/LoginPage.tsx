@@ -6,7 +6,7 @@ import { GithubLogo } from '@phosphor-icons/react';
 const GREEN = '#046f41';
 const BG = '#FBFBFB';
 const TEXT_DARK = '#2a023f';
-const TEXT_MUTED = '#727272';
+const TEXT_MUTED = '#000000';
 
 function startGithubLogin() {
   const apiUrl = import.meta.env.VITE_API_URL || "https://sinutre-backend-production-6873.up.railway.app";
