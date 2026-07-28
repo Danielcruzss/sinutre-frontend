@@ -2,9 +2,9 @@
 - Backend (RAilway): https://sinutre-backend-production-6873.up.railway.app
 - Frontend (Vercel): https://sinutre-frontend-ten.vercel.app
 
-## Funcionalides
--
--
+## Funcionalidades
+- troca de cores da pagina de login, adicionei um verde com um tom mais escuro e roxo no botao para entrar com github.
+- adicionei a funcionalidade de logout junto com um botão na pagina de iniicio.
 -
 -
 -
