@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { GithubLogo } from '@phosphor-icons/react';
-import { API_URL } from '@/lib/api';
+//import { API_URL } from '@/lib/api';
 
 // Cores extraídas do SVG do protótipo
 const GREEN = '#00C68F';
@@ -9,7 +9,8 @@ const TEXT_DARK = '#1F2937';
 const TEXT_MUTED = '#727272';
 
 function startGithubLogin() {
-  window.location.href = `${API_URL}/auth/github`;
+  const apiUrl = import.meta.env.VITE_API_URL || "https://sinutre-backend-production-6873.up.railway.app";
+  window.location.href = `${apiUrl}/auth/github`;
 }
 
 export function LoginPage() {
