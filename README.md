@@ -3,11 +3,11 @@
 - Frontend (Vercel): https://sinutre-frontend-ten.vercel.app
 
 ## Funcionalidades
-- troca de cores da pagina de login, adicionei um verde com um tom mais escuro e roxo no botao para entrar com github.
-- adicionei a funcionalidade de logout junto com um botão na pagina de iniicio.
--
--
--
+- Troca de cores da pagina de login, adicionei um verde com um tom mais escuro e roxo no botao para entrar com github.
+- Adicionei a funcionalidade de logout junto com um botão na pagina de iniicio.
+- O card de metas diárias de calorias fica vermelha ao ultrapassar as calorias diárias. 
+- Calculo do IMC.
+- 
 -
 -
 -
