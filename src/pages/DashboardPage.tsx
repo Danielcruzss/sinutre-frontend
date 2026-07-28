@@ -136,7 +136,7 @@ export function DashboardPage({ drawerId }: DashboardPageProps) {
     <>
       <button
         onClick={handleLogout}
-        className="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 flex items-center gap-2 px-4 py-2 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 rounded-lg font-semibold transition-colors shadow-sm cursor-pointer"
+        className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[9999] flex items-center gap-2 px-4 py-2 bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 rounded-lg font-semibold transition-colors shadow-sm cursor-pointer"
       >
         <SignOut size={20} weight="bold" />
         Sair
