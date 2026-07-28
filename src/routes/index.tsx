@@ -21,7 +21,6 @@ export function Router() {
           element={<LoginPage />}
         />
 
-
         <Route
           element={
             <ProtectedRoute>
@@ -39,7 +38,10 @@ export function Router() {
             element={<DietFoodPage />}
           />
 
-
+          <Route
+            path="/stats"
+            element={<MetricsPage drawerId="main-drawer" />}
+          />
           <Route
             path="/progress"
             element={<MetricsPage drawerId="main-drawer" />}
@@ -51,6 +53,11 @@ export function Router() {
           <Route
             path="/progresso"
             element={<MetricsPage drawerId="main-drawer" />}
+          />
+
+          <Route
+            path="/settings"
+            element={<DashboardPage drawerId="main-drawer" />} 
           />
 
         </Route>
