@@ -1,3 +1,18 @@
+## Links do Projeto em Produção
+- Backend (RAilway): https://sinutre-backend-production-6873.up.railway.app
+- Frontend (Vercel): https://sinutre-frontend-ten.vercel.app
+
+## Funcionalides
+-
+-
+-
+-
+-
+-
+-
+-
+-
+
 # Nutridash
 
 Dashboard de nutrição em React, convertido a partir do protótipo HTML original
