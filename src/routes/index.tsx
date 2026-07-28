@@ -8,7 +8,7 @@ import { AppLayout } from '@/layouts/AppLayout';
 import { LoginPage } from '@/pages/LoginPage';
 import { DashboardPage } from '@/pages/DashboardPage';
 import { DietFoodPage } from '@/pages/DietFood';
-import { MetricsPage } from '@/pages/MetricasPage'; 
+import { MetricsPage } from '@/pages/MetricasPage';
 import { ProtectedRoute } from './ProtectRoute';
 
 export function Router() {
@@ -20,6 +20,7 @@ export function Router() {
           path="/login"
           element={<LoginPage />}
         />
+
 
         <Route
           element={
@@ -38,8 +39,17 @@ export function Router() {
             element={<DietFoodPage />}
           />
 
+
           <Route
             path="/progress"
+            element={<MetricsPage drawerId="main-drawer" />}
+          />
+          <Route
+            path="/metrics"
+            element={<MetricsPage drawerId="main-drawer" />}
+          />
+          <Route
+            path="/progresso"
             element={<MetricsPage drawerId="main-drawer" />}
           />
 
