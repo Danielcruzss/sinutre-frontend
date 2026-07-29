@@ -11,6 +11,7 @@ import { DietFoodPage } from '@/pages/DietFood';
 import { MetricsPage } from '@/pages/MetricasPage';
 import { ProtectedRoute } from './ProtectRoute';
 
+
 export function Router() {
   return (
     <BrowserRouter>
@@ -48,7 +49,9 @@ export function Router() {
           />
           <Route
             path="/metrics"
-            element={<MetricsPage drawerId="main-drawer" />}
+            element={
+          <MetricsPage drawerId="main-drawer" />
+          }
           />
           <Route
             path="/progresso"
