@@ -11,6 +11,10 @@
 - Cadastro de dados do usuário.
 - Classificação atraves do calculo do IMC.
 - Página com as métricas.
+- Cadastro de alimentos com validação dos campos.
+- Alteração dos dados de um alimento cadastrado.
+- Exclusão de alimentos cadastrados.
+- 
 - 
 
 # Nutridash
