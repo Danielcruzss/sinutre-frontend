@@ -7,7 +7,7 @@ import {
 import { Header } from "@/components/layout/Header";
 import { useAuth } from "@/context/AuthContext";
 import { api } from "@/lib/api";
-
+import { getUserSettings } from "@/lib/userSettings";
 import type { Meal } from "@/types/mealSummary";
 
 interface MetricsPageProps {
@@ -61,6 +61,9 @@ export function MetricsPage({
   );
 
   const metricsUser = user as MetricsUser | null;
+  const [savedSettings] = useState(() =>
+  getUserSettings(),
+);
 
   useEffect(() => {
     let componentMounted = true;
@@ -107,12 +110,14 @@ export function MetricsPage({
     };
   }, []);
 
-  const weight = toValidNumber(metricsUser?.weight);
+ const weight = toValidNumber(
+  savedSettings.weight ?? metricsUser?.weight,
+);
 
   const height = useMemo(() => {
     const savedHeight = toValidNumber(
-      metricsUser?.height,
-    );
+    savedSettings.height ?? metricsUser?.height,
+);
 
     /*
      * Caso a altura venha como 175, transforma para 1,75.
@@ -210,8 +215,9 @@ export function MetricsPage({
     );
 
     const configuredGoal = toValidNumber(
-      metricsUser?.caloriesGoal,
-    );
+        savedSettings.caloriesGoal ??
+        metricsUser?.caloriesGoal,
+);
 
     const goal =
       configuredGoal > 0
@@ -229,7 +235,11 @@ export function MetricsPage({
       status,
       totalCalories,
     };
-  }, [meals, metricsUser?.caloriesGoal]);
+  }, [
+  meals,
+  savedSettings.caloriesGoal,
+  metricsUser?.caloriesGoal,
+]);
 
   if (loading) {
     return (

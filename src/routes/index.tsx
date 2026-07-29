@@ -10,6 +10,7 @@ import { DashboardPage } from '@/pages/DashboardPage';
 import { DietFoodPage } from '@/pages/DietFood';
 import { MetricsPage } from '@/pages/MetricasPage';
 import { ProtectedRoute } from './ProtectRoute';
+import { SettingsPage } from "@/pages/SettingsPage";
 
 
 export function Router() {
@@ -60,7 +61,9 @@ export function Router() {
 
           <Route
             path="/settings"
-            element={<DashboardPage drawerId="main-drawer" />} 
+            element={
+          <SettingsPage drawerId="main-drawer" />
+          }
           />
 
         </Route>
