@@ -11,5 +11,54 @@ export const API_URL = (
 
 export const api = axios.create({
   baseURL: API_URL,
-  withCredentials: true,
+});
+
+const TOKEN_KEY = "sinutre.token";
+
+export function getToken(): string | null {
+  return localStorage.getItem(TOKEN_KEY);
+}
+
+export function setToken(token: string): void {
+  localStorage.setItem(TOKEN_KEY, token);
+}
+
+export function clearToken(): void {
+  localStorage.removeItem(TOKEN_KEY);
+}
+
+export async function apiFetch<T>(
+  path: string,
+  init: RequestInit = {},
+): Promise<T> {
+  const token = getToken();
+
+  const response = await fetch(`${API_URL}${path}`, {
+    ...init,
+    headers: {
+      "Content-Type": "application/json",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      ...init.headers,
+    },
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+
+    throw new Error(
+      `${response.status} ${response.statusText}: ${text}`,
+    );
+  }
+
+  return response.json() as Promise<T>;
+}
+
+api.interceptors.request.use((config) => {
+  const token = getToken();
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  return config;
 });
