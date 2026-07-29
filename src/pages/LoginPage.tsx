@@ -3,8 +3,8 @@ import { GithubLogo } from '@phosphor-icons/react';
 //import { API_URL } from '@/lib/api';
 
 // Cores extraídas do SVG do protótipo
-const GREEN = '#046f41';
-const BG = '#ffffff';
+const GREEN = '#0b3b26';
+const BG = '#25f390';
 const TEXT_DARK = '#2a023f';
 const TEXT_MUTED = '#000000';
 
