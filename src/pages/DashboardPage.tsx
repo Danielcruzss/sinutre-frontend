@@ -122,43 +122,53 @@ export function DashboardPage({
   }, [meals]);
 
   const macroSummary = useMemo(() => {
-    const today = new Date();
+  const today = new Date();
 
-    const todayMeals = meals.filter((meal) => {
-      const mealDate = new Date(meal.eatTime);
+  const savedCaloriesGoal = Number(
+    user?.caloriesGoal ?? 0,
+  );
 
-      return isSameDay(mealDate, today);
-    });
+  const caloriesGoal =
+    Number.isFinite(savedCaloriesGoal) &&
+    savedCaloriesGoal > 0
+      ? savedCaloriesGoal
+      : 0;
 
-    return todayMeals.reduce(
-      (accumulator, meal) => {
-        accumulator.carbs += Number(
-          meal.totals?.carbs ?? 0,
-        );
+  const todayMeals = meals.filter((meal) => {
+    const mealDate = new Date(meal.eatTime);
 
-        accumulator.proteins += Number(
-          meal.totals?.proteins ?? 0,
-        );
+    return isSameDay(mealDate, today);
+  });
 
-        accumulator.fats += Number(
-          meal.totals?.fats ?? 0,
-        );
+  return todayMeals.reduce(
+    (accumulator, meal) => {
+      accumulator.carbs += Number(
+        meal.totals?.carbs ?? 0,
+      );
 
-        accumulator.calories += Number(
-          meal.totals?.calories ?? 0,
-        );
+      accumulator.proteins += Number(
+        meal.totals?.proteins ?? 0,
+      );
 
-        return accumulator;
-      },
-      {
-        carbs: 0,
-        proteins: 0,
-        fats: 0,
-        calories: 0,
-        caloriesGoal: 1000,
-      },
-    );
-  }, [meals]);
+      accumulator.fats += Number(
+        meal.totals?.fats ?? 0,
+      );
+
+      accumulator.calories += Number(
+        meal.totals?.calories ?? 0,
+      );
+
+      return accumulator;
+    },
+    {
+      carbs: 0,
+      proteins: 0,
+      fats: 0,
+      calories: 0,
+      caloriesGoal,
+    },
+  );
+}, [meals, user?.caloriesGoal]);
 
   if (authLoading || loading) {
     return (
