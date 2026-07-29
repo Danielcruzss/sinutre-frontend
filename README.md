@@ -8,10 +8,10 @@
 - O card de metas diárias de calorias fica vermelha ao ultrapassar as calorias diárias. 
 - Calculo do IMC.
 - Media calorica nos últimmos 7 dias.
--
--
--
--
+- Cadastro de dados do usuário.
+- Classificação atraves do calculo do IMC.
+- Página com as métricas.
+- 
 
 # Nutridash
 
