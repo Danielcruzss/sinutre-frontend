@@ -6,15 +6,15 @@
 - Troca de cores da pagina de login, adicionei um verde com um tom mais escuro e roxo no botao para entrar com github.
 - Adicionei a funcionalidade de logout junto com um botão na pagina de iniicio.
 - O card de metas diárias de calorias fica vermelha ao ultrapassar as calorias diárias. 
+- Página com as métricas.
 - Calculo do IMC.
 - Media calorica nos últimmos 7 dias.
 - Cadastro de dados do usuário.
 - Classificação atraves do calculo do IMC.
-- Página com as métricas.
 - Cadastro de alimentos com validação dos campos.
 - Alteração dos dados de um alimento cadastrado.
 - Exclusão de alimentos cadastrados.
-- 
+- Utilização dos dados cadastrados pelo usuário com o banco de dados.
 - 
 
 # Nutridash
