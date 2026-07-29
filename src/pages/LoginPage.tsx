@@ -4,7 +4,7 @@ import { GithubLogo } from '@phosphor-icons/react';
 
 // Cores extraídas do SVG do protótipo
 const GREEN = '#13965d';
-const BG = '#dbdbdb';
+const BG = '#ffffff';
 const TEXT_DARK = '#2a023f';
 const TEXT_MUTED = '#000000';
 
